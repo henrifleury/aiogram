@@ -13,16 +13,17 @@ bot = Bot(token=BOT_TOKEN)
 dp = Dispatcher()
 
 
-@dp.message(Command(commands=["start"]))
+@dp.message(Command(commands="start"))
 async def process_start_command(message: Message):
     await message.answer('Халоу, это эхо-бот. Напиши что-нибудь и я верну тебе твое сообщение')
 
 
-@dp.message(Command(commands=["help"]))
+@dp.message(Command(commands="help"))
 async def process_help_command(message: Message):
     await message.answer('Халоу, это эхо-бот. Я возвращаю обратно ТЕКСТОВЫЕ сообщения')
 
 
+# Этот хэндлер будет срабатывать на любые ваши сообщения, кроме команд "/start" и "/help"
 @dp.message()
 async def send_echo(message: Message):
     try:
